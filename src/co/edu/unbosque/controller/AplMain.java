@@ -1,9 +1,12 @@
 package co.edu.unbosque.controller;
 
+import co.edu.unbosque.view.PrincipalView;
+
 public class AplMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		
+		  PrincipalView view= new PrincipalView();
 
 	}
 
