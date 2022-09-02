@@ -3,11 +3,14 @@ package co.edu.unbosque.model.persistence;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -18,92 +21,63 @@ import co.edu.unbosque.model.*;
 
 public class Archive {
 
+	private ObjectInputStream input;
+	private ObjectOutputStream output;
+
 	public Archive() {
 
 	}
 
+	public Archive(File file) {
+
+		if (file.exists()) {
+
+		} else {
+			try {
+				file.createNewFile();
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public ArrayList<Person> readFilePerson(File file) {
 
-		try {
-			if (file.exists()) {
-				BufferedReader bReader = new BufferedReader(new FileReader(file));
-				ArrayList<Person> listOfPerson = new ArrayList<Person>();
-				Scanner scanner;
-				scanner = new Scanner(file);
+		ArrayList<Person> alPerson = new ArrayList<Person>();
+		if (file.length() != 0) {
 
-				while (scanner.hasNextLine()) {
-					String line = scanner.nextLine();
-					Scanner separate = new Scanner(line);
-					separate = new Scanner(line);
-					separate.useDelimiter("\\s*,\\s*");
-					Person c = new Person();
+			try {
 
-					c.setName(separate.next());
-					c.setLastName(separate.next());
-					c.setAge(separate.next());
-					c.setSex(separate.next());
-					c.setId(separate.next());
-					c.setTelephone(separate.next());
-					c.setEmail(separate.next());
+				input = new ObjectInputStream(new FileInputStream(file));
+				alPerson = (ArrayList<Person>) input.readObject();
 
-					listOfPerson.add(c);
-				}
+			} catch (FileNotFoundException e) {
 
-				bReader.close();
-				return listOfPerson;
+				e.printStackTrace();
 
-			} else {
-				return null;
+			} catch (IOException e) {
 
+				e.printStackTrace();
+			} catch (ClassNotFoundException e) {
+
+				e.printStackTrace();
 			}
+		}
+
+		return alPerson;
+	}
+
+	public void writeFilePerson(File file, ArrayList<Person> alPerson) {
+		try {
+			output = new ObjectOutputStream(new FileOutputStream(file));
+			output.writeObject(alPerson);
+			output.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println(e.getMessage());
-			return null;
-
+			e.printStackTrace();
 		}
-
-	}
-
-	public String writeFilePerson(File file, ArrayList<Person> listOfPerson) {
-
-		try {
-			if (!file.exists()) {
-				file.createNewFile();
-			}
-
-			BufferedWriter fWrite = new BufferedWriter(
-					new OutputStreamWriter(new FileOutputStream(file, true), "ISO-8859-1"));
-
-			for (Person person : listOfPerson) {
-				try {
-					fWrite.write(person.getName() + "," + person.getLastName() + "," + person.getAge() + ","
-							+ person.getSex() + "," + person.getId() + "," + person.getCountry() + "," + person.getTelephone() + ","
-							+ person.getEmail() + "\n");
-				} catch (Exception e) {
-					System.out.print("Error in file");
-				}
-			}
-			fWrite.close();
-			return "Correctly";
-		} catch (IOException ex) {
-			System.out.println(ex.getMessage());
-			return "Error in exception";
-		}
-	}
-
-	public void deleteArchivePerson() throws IOException {
-		String filePath = "data\\people.dat";
-		String input = null;
-		Scanner sc = new Scanner(new File(filePath));
-		FileWriter writer = new FileWriter("data\\people.dat");
-		Set set = new HashSet();
-		while (sc.hasNextLine()) {
-			input = sc.nextLine();
-			if (set.add(input)) {
-				writer.append(input + "\n");
-			}
-		}
-		writer.flush();
 	}
 
 }
