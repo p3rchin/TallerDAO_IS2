@@ -29,7 +29,7 @@ public class AddPersonPanel extends JPanel {
 		title.setBounds(335, 40, 400, 50);
 		title.setFont(new Font("Arial", Font.CENTER_BASELINE, 22));
 		add(title);
-		
+
 		labelName = new JLabel("Name: ");
 		labelName.setBounds(225, 120, 250, 20);
 		labelName.setFont(new Font("Arial", Font.BOLD, 15));
@@ -40,95 +40,107 @@ public class AddPersonPanel extends JPanel {
 		textName.setFont(new Font("Arial", Font.ROMAN_BASELINE, 12));
 		textName.setBounds(320, 120, 200, 20);
 		add(textName);
-		
+
 		lastname = new JLabel("Lastname: ");
 		lastname.setBounds(225, 150, 250, 20);
 		lastname.setFont(new Font("Arial", Font.BOLD, 15));
 		lastname.setForeground(Color.black);
 		add(lastname);
-		
+
 		textLastName = new JTextField();
 		textLastName.setFont(new Font("Arial", Font.ROMAN_BASELINE, 12));
 		textLastName.setBounds(320, 150, 200, 20);
 		add(textLastName);
-		
+
 		age = new JLabel("Age: ");
 		age.setBounds(225, 180, 250, 20);
 		age.setFont(new Font("Arial", Font.BOLD, 15));
 		age.setForeground(Color.black);
 		add(age);
-		
+
 		textAge = new JTextField();
 		textAge.setFont(new Font("Arial", Font.ROMAN_BASELINE, 12));
 		textAge.setBounds(320, 180, 200, 20);
 		add(textAge);
-		
+
 		sex = new JLabel("Sex: ");
 		sex.setBounds(225, 210, 250, 20);
 		sex.setFont(new Font("Arial", Font.BOLD, 15));
 		sex.setForeground(Color.black);
 		add(sex);
-		
+
 		textSex = new JTextField();
 		textSex.setFont(new Font("Arial", Font.ROMAN_BASELINE, 12));
 		textSex.setBounds(320, 210, 200, 20);
 		add(textSex);
-		
+
 		id = new JLabel("ID: ");
 		id.setBounds(225, 240, 250, 20);
 		id.setFont(new Font("Arial", Font.BOLD, 15));
 		id.setForeground(Color.black);
 		add(id);
-		
+
 		textId = new JTextField();
 		textId.setFont(new Font("Arial", Font.ROMAN_BASELINE, 12));
 		textId.setBounds(320, 240, 200, 20);
 		add(textId);
-		
+
 		country = new JLabel("Country: ");
 		country.setBounds(225, 270, 250, 20);
 		country.setFont(new Font("Arial", Font.BOLD, 15));
 		country.setForeground(Color.black);
 		add(country);
-		
+
 		textCountry = new JTextField();
 		textCountry.setFont(new Font("Arial", Font.ROMAN_BASELINE, 12));
 		textCountry.setBounds(320, 270, 200, 20);
 		add(textCountry);
-		
+
 		telephone = new JLabel("Telephone: ");
 		telephone.setBounds(225, 300, 250, 20);
 		telephone.setFont(new Font("Arial", Font.BOLD, 15));
 		telephone.setForeground(Color.black);
 		add(telephone);
-		
+
 		textTelephone = new JTextField();
 		textTelephone.setFont(new Font("Arial", Font.ROMAN_BASELINE, 12));
 		textTelephone.setBounds(320, 300, 200, 20);
 		add(textTelephone);
-		
+
 		email = new JLabel("E-mail: ");
 		email.setBounds(225, 330, 250, 20);
 		email.setFont(new Font("Arial", Font.BOLD, 15));
 		email.setForeground(Color.black);
 		add(email);
-		
+
 		textEmail = new JTextField();
 		textEmail.setFont(new Font("Arial", Font.ROMAN_BASELINE, 12));
 		textEmail.setBounds(320, 330, 200, 20);
 		add(textEmail);
-		
+
 		addButton = new JButton("Register");
 		addButton.setBounds(335, 370, 150, 35);
 		addButton.setFont(new Font("Arial", Font.CENTER_BASELINE, 12));
-		addButton.setActionCommand("ADDFRIENDBUTTON");
+		addButton.setActionCommand("REGISTERPERSONBUTTON");
 		add(addButton);
-		
+
 		returnButton = new JButton(" ← Home");
 		returnButton.setBounds(20, 20, 100, 30);
 		returnButton.setFont(new Font("Arial", Font.CENTER_BASELINE, 12));
 		returnButton.setActionCommand("RETURNBUTTON");
 		add(returnButton);
+	}
+
+	public void formatSpaces() {
+
+		textName.setText("");
+		textLastName.setText("");
+		textAge.setText("");
+		textSex.setText("");
+		textId.setText("");
+		textCountry.setText("");
+		textTelephone.setText("");
+		textEmail.setText("");
 	}
 
 	public JLabel getTitle() {
