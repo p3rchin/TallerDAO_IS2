@@ -47,7 +47,15 @@ public class Controller implements ActionListener {
 					&& !"".equals(principalView.getAddPersonPanel().getCountry().getText())
 					&& !"".equals(principalView.getAddPersonPanel().getTextTelephone().getText())
 					&& !"".equals(principalView.getAddPersonPanel().getTextEmail().getText())) {
-				
+
+				String pName = principalView.getAddPersonPanel().getTextName().getText();
+				String pLastname = principalView.getAddPersonPanel().getTextLastName().getText();
+				String pSex = principalView.getAddPersonPanel().getTextSex().getText();
+				String pID = principalView.getAddPersonPanel().getTextId().getText();
+				String pCountry = principalView.getAddPersonPanel().getCountry().getText();
+				String pTelephone = principalView.getAddPersonPanel().getTextTelephone().getText();
+				String pEmail = principalView.getAddPersonPanel().getTextEmail().getText();
+
 				principalView.getAddPersonPanel().formatSpaces();
 			} else {
 				JOptionPane.showMessageDialog(null, "Required fields", "Error", JOptionPane.ERROR_MESSAGE);
