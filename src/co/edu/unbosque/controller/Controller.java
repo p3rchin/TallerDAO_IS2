@@ -18,8 +18,6 @@ public class Controller implements ActionListener {
 		principalView = new PrincipalView();
 		assignListeners();
 		person = new PersonSQLDAO();
-		person.create();
-		person.mostrar();
 
 	}
 
@@ -31,6 +29,12 @@ public class Controller implements ActionListener {
 		principalView.getEditPersonArray().addActionListener(this);
 		principalView.getEditPersonPanel().getEditButton().addActionListener(this);
 		principalView.getEditPersonPanel().getReturnButton().addActionListener(this);
+
+		principalView.getAddPersonSQL().addActionListener(this);
+		principalView.getAddSQLPersonPanel().getAddButton().addActionListener(this);
+		principalView.getEditPersonSQL().addActionListener(this);
+		principalView.getEditSQLPersonPanel().getEditButton().addActionListener(this);
+		principalView.getDeletePersonSQL().addActionListener(this);
 
 	}
 
@@ -78,13 +82,12 @@ public class Controller implements ActionListener {
 
 		if (command.equals("EDITPERSONARRAY")) {
 
-			String messageEditCloseFriend = "";
+			String messageEditPerson = "";
 
 			try {
-				messageEditCloseFriend = JOptionPane
-						.showInputDialog("Fill in the gap with the ID of the person to edit");
+				messageEditPerson = JOptionPane.showInputDialog("Fill in the gap with the ID of the person to edit");
 
-				principalView.getEditPersonPanel().getTextId().setText(messageEditCloseFriend);
+				principalView.getEditPersonPanel().getTextId().setText(messageEditPerson);
 				principalView.getEditPersonPanel().setVisible(true);
 				principalView.getMenubar().setVisible(false);
 
@@ -108,10 +111,81 @@ public class Controller implements ActionListener {
 				principalView.getEditPersonPanel().formatSpaces();
 			}
 		} else if (command.equals("RETURNEDITARRAYBUTTON")) {
-			
+
 			principalView.getEditPersonPanel().formatSpaces();
 			principalView.getEditPersonPanel().setVisible(false);
 			principalView.getMenubar().setVisible(true);
+		}
+
+		if (command.equals("ADDPERSONSQL")) {
+			principalView.getAddSQLPersonPanel().setVisible(true);
+			principalView.getMenubar().setVisible(false);
+
+		}
+		if (command.equals("REGISTERPERSONSQLBUTTON")) {
+
+			String pName = principalView.getAddSQLPersonPanel().getTextName().getText();
+			String pLastname = principalView.getAddSQLPersonPanel().getTextLastName().getText();
+			String pEdad = principalView.getAddSQLPersonPanel().getTextAge().getText();
+			String pSex = principalView.getAddSQLPersonPanel().getTextSex().getText();
+			String pID = principalView.getAddSQLPersonPanel().getTextId().getText();
+			String pCountry = principalView.getAddSQLPersonPanel().getTextCountry().getText();
+			String pTelephone = principalView.getAddSQLPersonPanel().getTextTelephone().getText();
+			String pEmail = principalView.getAddSQLPersonPanel().getTextEmail().getText();
+
+			System.out.print(pName);
+			person.create(pName, pLastname, pEdad, pSex, pID, pCountry, pTelephone, pEmail);
+			System.out.print("Creado esa monda");
+		}
+
+		if (command.equals("EDITPERSONSQL")) {
+
+			String id = "";
+
+			try {
+				id = JOptionPane.showInputDialog("Fill in the gap with the ID of the person to edit SQL");
+
+				principalView.getEditSQLPersonPanel().getTextId().setText(id);
+				principalView.getEditSQLPersonPanel().setVisible(true);
+				principalView.getMenubar().setVisible(false);
+
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(null, "Cancelation process ", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+
+		}
+		if (command.equals("EDITPERSONSQLBUTTON")) {
+			String pName = principalView.getEditSQLPersonPanel().getTextName().getText();
+			String pLastname = principalView.getEditSQLPersonPanel().getTextLastName().getText();
+			String pEdad = principalView.getEditSQLPersonPanel().getTextAge().getText();
+			String pSex = principalView.getEditSQLPersonPanel().getTextSex().getText();
+			String pID = principalView.getEditSQLPersonPanel().getTextId().getText();
+			String pCountry = principalView.getEditSQLPersonPanel().getTextCountry().getText();
+			String pTelephone = principalView.getEditSQLPersonPanel().getTextTelephone().getText();
+			String pEmail = principalView.getEditSQLPersonPanel().getTextEmail().getText();
+
+			System.out.print(pName);
+			person.edit(pName, pLastname, pEdad, pSex, pID, pCountry, pTelephone, pEmail);
+		}
+
+		if (command.equals("DELETEPERSONSQL")) {
+
+			String id = "";
+
+			try {
+				id = JOptionPane.showInputDialog("Fill in the gap with the ID of the person to delete SQL");
+
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(null, "Cancelation process ", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+
+			person.eliminar(id);
+		}
+
+		if (command.equals("SEARCHPERSONSQL")) {
+
+			person.mostrar();
+
 		}
 	}
 

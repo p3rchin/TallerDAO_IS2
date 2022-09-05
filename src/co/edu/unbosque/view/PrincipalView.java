@@ -8,6 +8,8 @@ public class PrincipalView extends JFrame {
 
 	private AddPersonPanel addPersonPanel;
 	private EditPersonPanel editPersonPanel;
+	private AddSQLPersonPanel addSQLPersonPanel;
+	private EditSQLPersonPanel editSQLPersonPanel;
 	private JMenuBar menubar;
 	private JMenu options, array, binary, sql, noSql;
 	private JMenuItem addPersonArray, editPersonArray, deletePersonArray, searchPersonArray, addPersonBinary,
@@ -34,6 +36,12 @@ public class PrincipalView extends JFrame {
 
 		editPersonPanel = new EditPersonPanel();
 		getContentPane().add(editPersonPanel);
+
+		addSQLPersonPanel = new AddSQLPersonPanel();
+		getContentPane().add(addSQLPersonPanel);
+
+		editSQLPersonPanel = new EditSQLPersonPanel();
+		getContentPane().add(editSQLPersonPanel);
 
 		menubar = new JMenuBar();
 		getContentPane().add(menubar);
@@ -327,4 +335,21 @@ public class PrincipalView extends JFrame {
 	public void setExit(JMenuItem exit) {
 		this.exit = exit;
 	}
+
+	public AddSQLPersonPanel getAddSQLPersonPanel() {
+		return addSQLPersonPanel;
+	}
+
+	public void setAddSQLPersonPanel(AddSQLPersonPanel addSQLPersonPanel) {
+		this.addSQLPersonPanel = addSQLPersonPanel;
+	}
+
+	public EditSQLPersonPanel getEditSQLPersonPanel() {
+		return editSQLPersonPanel;
+	}
+
+	public void setEditSQLPersonPanel(EditSQLPersonPanel editSQLPersonPanel) {
+		this.editSQLPersonPanel = editSQLPersonPanel;
+	}
+
 }

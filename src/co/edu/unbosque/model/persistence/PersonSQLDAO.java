@@ -8,18 +8,19 @@ import java.util.Scanner;
 
 public class PersonSQLDAO {
 
-	public static void create() {
+	public static void create(String nombre, String apellido, String edad, String sexo, String id, String pais,
+			String numero, String correo) {
 		ConectSQL conectabd = new ConectSQL();
 		try (Connection c = conectabd.conexionDB()) {
 			PreparedStatement ps = c.prepareStatement("INSERT into persona Values(?,?,?,?,?,?,?,?)");
-			ps.setString(1, "Santy");
-			ps.setString(2, "Porras");
-			ps.setString(3, "20");
-			ps.setString(4, "M");
-			ps.setString(5, "2");
-			ps.setString(6, "Colombia");
-			ps.setString(7, "21412311");
-			ps.setString(8, "sporras@unbusque.edu.co");
+			ps.setString(1, nombre);
+			ps.setString(2, apellido);
+			ps.setString(3, edad);
+			ps.setString(4, sexo);
+			ps.setString(5, id);
+			ps.setString(6, pais);
+			ps.setString(7, numero);
+			ps.setString(8, correo);
 			ps.executeUpdate();
 
 			System.out.print("Conexión exitosa");
@@ -28,13 +29,12 @@ public class PersonSQLDAO {
 		}
 	}
 
-	public static void eliminar() {
+	public static void eliminar(String id) {
 		ConectSQL conectabd = new ConectSQL();
 		Scanner sc = new Scanner(System.in).useDelimiter("");
 		try (Connection c = conectabd.conexionDB()) {
 			PreparedStatement ps = c.prepareStatement("DELETE FROM persona WHERE id=?");
 			System.out.print("ingresar codigo");
-			String id = sc.next();
 			ps.setString(1, id);
 
 			ps.executeUpdate();
@@ -45,27 +45,25 @@ public class PersonSQLDAO {
 		}
 	}
 
-	public static void edit() {
+	public static void edit(String nombre, String apellido, String edad, String sexo, String id, String pais,
+			String numero, String correo) {
 		ConectSQL conectabd = new ConectSQL();
 		Scanner sc = new Scanner(System.in).useDelimiter("");
 		try (Connection c = conectabd.conexionDB()) {
 			PreparedStatement ps = c.prepareStatement(
 					"UPDATE  persona  SET nombre=?, apellido=?,edad=?,sexo=?,pais=?,celular=?,correo=? WHERE id=?");
 
-			System.out.print("ingresar codigo");
-			String id = sc.next();
-
-			ps.setString(1, "Santy");
-			ps.setString(2, "Porras");
-			ps.setString(3, "20");
-			ps.setString(4, "M");
-			ps.setString(5, "Colombia");
-			ps.setString(6, "21412311");
-			ps.setString(7, "sporras");
+			ps.setString(1, nombre);
+			ps.setString(2, apellido);
+			ps.setString(3, edad);
+			ps.setString(4, sexo);
+			ps.setString(5, pais);
+			ps.setString(6, numero);
+			ps.setString(7, correo);
 			ps.setString(8, id);
 			ps.executeUpdate();
 
-			System.out.print("Conexión exitosa");
+			System.out.print("Conexión exitosa edit");
 		} catch (Exception e) {
 			System.err.print("Error: " + e.getMessage());
 		}
