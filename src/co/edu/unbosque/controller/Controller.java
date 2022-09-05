@@ -24,6 +24,8 @@ public class Controller implements ActionListener {
 		principalView.getAddPersonPanel().getAddButton().addActionListener(this);
 		principalView.getAddPersonPanel().getReturnButton().addActionListener(this);
 		principalView.getEditPersonArray().addActionListener(this);
+		principalView.getEditPersonPanel().getEditButton().addActionListener(this);
+		principalView.getEditPersonPanel().getReturnButton().addActionListener(this);
 
 	}
 
@@ -57,9 +59,6 @@ public class Controller implements ActionListener {
 				String pTelephone = principalView.getAddPersonPanel().getTextTelephone().getText();
 				String pEmail = principalView.getAddPersonPanel().getTextEmail().getText();
 
-				
-				
-				
 			} else {
 				JOptionPane.showMessageDialog(null, "Required fields", "Error", JOptionPane.ERROR_MESSAGE);
 				principalView.getAddPersonPanel().formatSpaces();
@@ -80,11 +79,34 @@ public class Controller implements ActionListener {
 				messageEditCloseFriend = JOptionPane
 						.showInputDialog("Fill in the gap with the ID of the person to edit");
 
-				
+				principalView.getEditPersonPanel().getTextId().setText(messageEditCloseFriend);
+				principalView.getEditPersonPanel().setVisible(true);
+				principalView.getMenubar().setVisible(false);
+
 			} catch (Exception e1) {
 				JOptionPane.showMessageDialog(null, "Cancelation process ", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 
+		}
+
+		if (command.equals("EDITPERSONARRAYBUTTON")) {
+
+			if (!"".equals(principalView.getEditPersonPanel().getTextName().getText())
+					&& !"".equals(principalView.getEditPersonPanel().getTextLastName().getText())
+					&& !"".equals(principalView.getEditPersonPanel().getTextSex().getText())
+					&& !"".equals(principalView.getEditPersonPanel().getCountry().getText())
+					&& !"".equals(principalView.getEditPersonPanel().getTextTelephone().getText())
+					&& !"".equals(principalView.getEditPersonPanel().getTextEmail().getText())) {
+
+			} else {
+				JOptionPane.showMessageDialog(null, "Required fields", "Error", JOptionPane.ERROR_MESSAGE);
+				principalView.getEditPersonPanel().formatSpaces();
+			}
+		} else if (command.equals("RETURNEDITARRAYBUTTON")) {
+			
+			principalView.getEditPersonPanel().formatSpaces();
+			principalView.getEditPersonPanel().setVisible(false);
+			principalView.getMenubar().setVisible(true);
 		}
 	}
 

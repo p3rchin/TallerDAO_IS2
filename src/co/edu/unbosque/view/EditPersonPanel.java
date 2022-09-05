@@ -12,7 +12,7 @@ public class EditPersonPanel extends JPanel {
 
 	private JLabel title, labelName, lastname, age, sex, id, country, telephone, email;
 	private JTextField textName, textLastName, textAge, textSex, textId, textCountry, textTelephone, textEmail;
-	private JButton addButton, returnButton;
+	private JButton editButton, returnButton;
 
 	public EditPersonPanel() {
 
@@ -25,7 +25,7 @@ public class EditPersonPanel extends JPanel {
 
 	public void initialize() {
 
-		title = new JLabel("Add person");
+		title = new JLabel("Edit person");
 		title.setBounds(335, 40, 400, 50);
 		title.setFont(new Font("Arial", Font.CENTER_BASELINE, 22));
 		add(title);
@@ -119,16 +119,16 @@ public class EditPersonPanel extends JPanel {
 		textEmail.setBounds(320, 330, 200, 20);
 		add(textEmail);
 
-		addButton = new JButton("Register");
-		addButton.setBounds(335, 370, 150, 35);
-		addButton.setFont(new Font("Arial", Font.CENTER_BASELINE, 12));
-		addButton.setActionCommand("REGISTERPERSONARRAYBUTTON");
-		add(addButton);
+		editButton = new JButton("Register");
+		editButton.setBounds(335, 370, 150, 35);
+		editButton.setFont(new Font("Arial", Font.CENTER_BASELINE, 12));
+		editButton.setActionCommand("EDITPERSONARRAYBUTTON");
+		add(editButton);
 
 		returnButton = new JButton(" ← Home");
 		returnButton.setBounds(20, 20, 100, 30);
 		returnButton.setFont(new Font("Arial", Font.CENTER_BASELINE, 12));
-		returnButton.setActionCommand("RETURNREGISTERARRAYBUTTON");
+		returnButton.setActionCommand("RETURNEDITARRAYBUTTON");
 		add(returnButton);
 	}
 
@@ -279,12 +279,12 @@ public class EditPersonPanel extends JPanel {
 		this.textEmail = textEmail;
 	}
 
-	public JButton getAddButton() {
-		return addButton;
+	public JButton getEditButton() {
+		return editButton;
 	}
 
-	public void setAddButton(JButton addButton) {
-		this.addButton = addButton;
+	public void setEditButton(JButton editButton) {
+		this.editButton = editButton;
 	}
 
 	public JButton getReturnButton() {
