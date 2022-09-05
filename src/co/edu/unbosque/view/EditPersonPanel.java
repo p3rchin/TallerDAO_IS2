@@ -8,13 +8,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class AddPersonPanel extends JPanel {
+public class EditPersonPanel extends JPanel {
 
 	private JLabel title, labelName, lastname, age, sex, id, country, telephone, email;
 	private JTextField textName, textLastName, textAge, textSex, textId, textCountry, textTelephone, textEmail;
 	private JButton addButton, returnButton;
 
-	public AddPersonPanel() {
+	public EditPersonPanel() {
 
 		setSize(800, 500);
 		setBackground(new Color(252, 244, 132));
@@ -83,6 +83,7 @@ public class AddPersonPanel extends JPanel {
 		textId = new JTextField();
 		textId.setFont(new Font("Arial", Font.ROMAN_BASELINE, 12));
 		textId.setBounds(320, 240, 200, 20);
+		textId.setEditable(false);
 		add(textId);
 
 		country = new JLabel("Country: ");
@@ -137,7 +138,6 @@ public class AddPersonPanel extends JPanel {
 		textLastName.setText("");
 		textAge.setText("");
 		textSex.setText("");
-		textId.setText("");
 		textCountry.setText("");
 		textTelephone.setText("");
 		textEmail.setText("");

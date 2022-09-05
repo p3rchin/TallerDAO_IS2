@@ -23,6 +23,7 @@ public class Controller implements ActionListener {
 		principalView.getAddPersonArray().addActionListener(this);
 		principalView.getAddPersonPanel().getAddButton().addActionListener(this);
 		principalView.getAddPersonPanel().getReturnButton().addActionListener(this);
+		principalView.getEditPersonArray().addActionListener(this);
 
 	}
 
@@ -38,7 +39,7 @@ public class Controller implements ActionListener {
 
 		}
 
-		if (command.equals("REGISTERPERSONBUTTON")) {
+		if (command.equals("REGISTERPERSONARRAYBUTTON")) {
 
 			if (!"".equals(principalView.getAddPersonPanel().getTextName().getText())
 					&& !"".equals(principalView.getAddPersonPanel().getTextLastName().getText())
@@ -56,10 +57,32 @@ public class Controller implements ActionListener {
 				String pTelephone = principalView.getAddPersonPanel().getTextTelephone().getText();
 				String pEmail = principalView.getAddPersonPanel().getTextEmail().getText();
 
-				principalView.getAddPersonPanel().formatSpaces();
+				
+				
+				
 			} else {
 				JOptionPane.showMessageDialog(null, "Required fields", "Error", JOptionPane.ERROR_MESSAGE);
 				principalView.getAddPersonPanel().formatSpaces();
+			}
+
+		} else if (command.equals("RETURNREGISTERARRAYBUTTON")) {
+
+			principalView.getAddPersonPanel().formatSpaces();
+			principalView.getAddPersonPanel().setVisible(false);
+			principalView.getMenubar().setVisible(true);
+		}
+
+		if (command.equals("EDITPERSONARRAY")) {
+
+			String messageEditCloseFriend = "";
+
+			try {
+				messageEditCloseFriend = JOptionPane
+						.showInputDialog("Fill in the gap with the ID of the person to edit");
+
+				
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(null, "Cancelation process ", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 
 		}

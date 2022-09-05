@@ -7,6 +7,7 @@ import javax.swing.*;
 public class PrincipalView extends JFrame {
 
 	private AddPersonPanel addPersonPanel;
+	private EditPersonPanel editPersonPanel;
 	private JMenuBar menubar;
 	private JMenu options, array, binary, sql, noSql;
 	private JMenuItem addPersonArray, editPersonArray, deletePersonArray, searchPersonArray, addPersonBinary,
@@ -30,6 +31,9 @@ public class PrincipalView extends JFrame {
 
 		addPersonPanel = new AddPersonPanel();
 		getContentPane().add(addPersonPanel);
+
+		editPersonPanel = new EditPersonPanel();
+		getContentPane().add(editPersonPanel);
 
 		menubar = new JMenuBar();
 		getContentPane().add(menubar);
@@ -130,6 +134,14 @@ public class PrincipalView extends JFrame {
 
 	public void setAddPersonPanel(AddPersonPanel addPersonPanel) {
 		this.addPersonPanel = addPersonPanel;
+	}
+
+	public EditPersonPanel getEditPersonPanel() {
+		return editPersonPanel;
+	}
+
+	public void setEditPersonPanel(EditPersonPanel editPersonPanel) {
+		this.editPersonPanel = editPersonPanel;
 	}
 
 	public JMenuBar getMenubar() {
