@@ -5,16 +5,21 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import co.edu.unbosque.model.persistence.PersonSQLDAO;
 import co.edu.unbosque.view.PrincipalView;
 
 public class Controller implements ActionListener {
 
 	private PrincipalView principalView;
+	private PersonSQLDAO person;
 
 	public Controller() {
 
 		principalView = new PrincipalView();
 		assignListeners();
+		person = new PersonSQLDAO();
+		person.create();
+		person.mostrar();
 
 	}
 
