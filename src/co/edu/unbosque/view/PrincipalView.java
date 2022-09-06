@@ -136,6 +136,18 @@ public class PrincipalView extends JFrame {
 		options.add(exit);
 	}
 
+	public void warningMessages(String message) {
+		JOptionPane.showMessageDialog(null, message, "Advertencia", JOptionPane.WARNING_MESSAGE);
+	}
+
+	public void errorMessages(String message) {
+		JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+	}
+
+	public void informationMessages(String message) {
+		JOptionPane.showMessageDialog(null, message, "Información", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
 	public AddPersonPanel getAddPersonPanel() {
 		return addPersonPanel;
 	}

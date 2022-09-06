@@ -5,6 +5,7 @@ import java.awt.Font;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -143,6 +144,18 @@ public class AddSQLPersonPanel extends JPanel {
 		textEmail.setText("");
 	}
 
+	public void warningMessages(String message) {
+		JOptionPane.showMessageDialog(null, message, "Advertencia", JOptionPane.WARNING_MESSAGE);
+	}
+
+	public void errorMessages(String message) {
+		JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE);
+	}
+
+	public void informationMessages(String message) {
+		JOptionPane.showMessageDialog(null, message, "Información", JOptionPane.INFORMATION_MESSAGE);
+	}
+	
 	public JLabel getTitle() {
 		return title;
 	}

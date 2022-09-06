@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class PersonSQLDAO {
 
-	public static void create(String nombre, String apellido, String edad, String sexo, String id, String pais,
+	public boolean create(String nombre, String apellido, String edad, String sexo, String id, String pais,
 			String numero, String correo) {
 		ConectSQL conectabd = new ConectSQL();
 		try (Connection c = conectabd.conexionDB()) {
@@ -22,31 +22,32 @@ public class PersonSQLDAO {
 			ps.setString(7, numero);
 			ps.setString(8, correo);
 			ps.executeUpdate();
-
-			System.out.print("Conexión exitosa");
+			return true;
 		} catch (Exception e) {
 			System.err.print("Error: " + e.getMessage());
 		}
+		return false;
 	}
 
-	public static void eliminar(String id) {
+	public boolean eliminar(String id) {
 		ConectSQL conectabd = new ConectSQL();
 		Scanner sc = new Scanner(System.in).useDelimiter("");
 		try (Connection c = conectabd.conexionDB()) {
 			PreparedStatement ps = c.prepareStatement("DELETE FROM persona WHERE id=?");
-			System.out.print("ingresar codigo");
+			
 			ps.setString(1, id);
 
 			ps.executeUpdate();
 
-			System.out.print("Conexión exitosa");
+			return true;
 		} catch (Exception e) {
 			System.err.print("Error: " + e.getMessage());
 		}
+		return false;
 	}
 
-	public static void edit(String nombre, String apellido, String edad, String sexo, String id, String pais,
-			String numero, String correo) {
+	public boolean edit(String nombre, String apellido, String edad, String sexo, String id, String pais, String numero,
+			String correo) {
 		ConectSQL conectabd = new ConectSQL();
 		Scanner sc = new Scanner(System.in).useDelimiter("");
 		try (Connection c = conectabd.conexionDB()) {
@@ -62,11 +63,12 @@ public class PersonSQLDAO {
 			ps.setString(7, correo);
 			ps.setString(8, id);
 			ps.executeUpdate();
+			return true;
 
-			System.out.print("Conexión exitosa edit");
 		} catch (Exception e) {
 			System.err.print("Error: " + e.getMessage());
 		}
+		return false;
 	}
 
 	public static void mostrar() {
