@@ -10,6 +10,7 @@ public class PrincipalView extends JFrame {
 	private EditPersonPanel editPersonPanel;
 	private AddSQLPersonPanel addSQLPersonPanel;
 	private EditSQLPersonPanel editSQLPersonPanel;
+	private ShowAllPersonPanel showAllPersonPanel;
 	private JMenuBar menubar;
 	private JMenu options, array, binary, sql, noSql;
 	private JMenuItem addPersonArray, editPersonArray, deletePersonArray, searchPersonArray, addPersonBinary,
@@ -42,6 +43,9 @@ public class PrincipalView extends JFrame {
 
 		editSQLPersonPanel = new EditSQLPersonPanel();
 		getContentPane().add(editSQLPersonPanel);
+
+		showAllPersonPanel = new ShowAllPersonPanel();
+		getContentPane().add(showAllPersonPanel);
 
 		menubar = new JMenuBar();
 		getContentPane().add(menubar);
@@ -147,7 +151,7 @@ public class PrincipalView extends JFrame {
 	public void informationMessages(String message) {
 		JOptionPane.showMessageDialog(null, message, "Información", JOptionPane.INFORMATION_MESSAGE);
 	}
-	
+
 	public AddPersonPanel getAddPersonPanel() {
 		return addPersonPanel;
 	}
@@ -162,6 +166,30 @@ public class PrincipalView extends JFrame {
 
 	public void setEditPersonPanel(EditPersonPanel editPersonPanel) {
 		this.editPersonPanel = editPersonPanel;
+	}
+
+	public AddSQLPersonPanel getAddSQLPersonPanel() {
+		return addSQLPersonPanel;
+	}
+
+	public void setAddSQLPersonPanel(AddSQLPersonPanel addSQLPersonPanel) {
+		this.addSQLPersonPanel = addSQLPersonPanel;
+	}
+
+	public EditSQLPersonPanel getEditSQLPersonPanel() {
+		return editSQLPersonPanel;
+	}
+
+	public void setEditSQLPersonPanel(EditSQLPersonPanel editSQLPersonPanel) {
+		this.editSQLPersonPanel = editSQLPersonPanel;
+	}
+
+	public ShowAllPersonPanel getShowAllPersonPanel() {
+		return showAllPersonPanel;
+	}
+
+	public void setShowAllPersonPanel(ShowAllPersonPanel showAllPersonPanel) {
+		this.showAllPersonPanel = showAllPersonPanel;
 	}
 
 	public JMenuBar getMenubar() {
@@ -347,21 +375,4 @@ public class PrincipalView extends JFrame {
 	public void setExit(JMenuItem exit) {
 		this.exit = exit;
 	}
-
-	public AddSQLPersonPanel getAddSQLPersonPanel() {
-		return addSQLPersonPanel;
-	}
-
-	public void setAddSQLPersonPanel(AddSQLPersonPanel addSQLPersonPanel) {
-		this.addSQLPersonPanel = addSQLPersonPanel;
-	}
-
-	public EditSQLPersonPanel getEditSQLPersonPanel() {
-		return editSQLPersonPanel;
-	}
-
-	public void setEditSQLPersonPanel(EditSQLPersonPanel editSQLPersonPanel) {
-		this.editSQLPersonPanel = editSQLPersonPanel;
-	}
-
 }
