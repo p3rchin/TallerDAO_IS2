@@ -35,6 +35,7 @@ public class Controller implements ActionListener {
 		principalView.getEditPersonPanel().getReturnButton().addActionListener(this);
 		principalView.getSearchPersonArray().addActionListener(this);
 		principalView.getShowAllPersonPanel().getReturnButton().addActionListener(this);
+		principalView.getDeletePersonArray().addActionListener(this);
 
 		principalView.getAddPersonSQL().addActionListener(this);
 		principalView.getAddSQLPersonPanel().getAddButton().addActionListener(this);
@@ -183,6 +184,32 @@ public class Controller implements ActionListener {
 
 		}
 
+		if (command.equals("DELETEPERSONARRAY")) {
+
+			String id = "";
+
+			try {
+				id = JOptionPane.showInputDialog("Fill in the gap with the ID of the person to delete SQL");
+				if (id != null) {
+
+					if (!"".equals(id)) {
+						if (!personDAO.deletePerson(id)) {
+							principalView.errorMessages(
+									"Surgió un error. Puede ser que no exista la ID. Intenta borrar de nuevo a la persona");
+						} else {
+							principalView.informationMessages(
+									"Felicidades la persona con la ID: " + id + " ha sido borrada con éxito.");
+						}
+					} else {
+						JOptionPane.showMessageDialog(null, "Required fields", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+				}
+			} catch (Exception e1) {
+				JOptionPane.showMessageDialog(null, "Cancelation process ", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+
+		}
+
 		// -------------------------------SQL----------------------------------
 
 		if (command.equals("ADDPERSONSQL")) {
@@ -192,6 +219,7 @@ public class Controller implements ActionListener {
 		}
 		if (command.equals("REGISTERPERSONSQLBUTTON")) {
 
+		
 			if (!"".equals(principalView.getAddSQLPersonPanel().getTextName().getText())
 					&& !"".equals(principalView.getAddSQLPersonPanel().getTextLastName().getText())
 					&& !"".equals(principalView.getAddSQLPersonPanel().getTextAge().getText())
